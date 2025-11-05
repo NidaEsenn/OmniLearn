@@ -9,10 +9,10 @@ Low-cost AI education system using RAG and OmniAvatar to create interactive Q&am
 
 <p align="center">
   <b>Taha Oguzhan Ucar</b> — M.S. in Artificial Intelligence, Northeastern University  
-  📧 ucar.t@northeastern.edu | NUID: 003158954  
+ 
   <br>
   <b>Nida Esen</b> — M.S. in Artificial Intelligence, Northeastern University  
-  📧 esen.n@northeastern.edu | NUID: 002594922  
+
 </p>
 
 ---
