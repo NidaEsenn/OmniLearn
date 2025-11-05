@@ -81,32 +81,23 @@ We test the pipeline on **CS 5800: Algorithms Lecture Notes (85 pages)**:
 
 ---
 
-## 🧠 Architecture Diagram (Mermaid)
+## 🧠 Architecture Diagram 
 
-```mermaid
-flowchart TD
-    A[PDFs] --> B[Text extraction - PyMuPDF]
-    B --> C[Chunking - 1000 chars + overlap]
-    C --> D[Embeddings - bge small model]
-    D --> E[Vector store - ChromaDB]
-    E --> F[Retriever - cosine similarity]
-    F --> G[LLM - Gemini Flash]
-    G --> H[Q&A responses]
-    F --> I[Script builder for lessons]
-    I --> J[Audio generation - gTTS]
-    J --> K[Video - OmniAvatar]
-    H --> L[Study plan generator]
-    L --> M[User dashboard]
-    K --> M
-    subgraph Evaluation
-      N[Extraction >95%]
-      O[Q&A relevance >85%]
-      P[Latency <5s]
-      Q[Avatar quality]
-    end
-    H --> Evaluation
-    K --> Evaluation
+### System Pipeline
 
+1. **PDF Extraction** — Parse text, equations, and code with **PyMuPDF**.  
+2. **Chunking** — Split into ~**1000-character** chunks with **200 overlap** for context.  
+3. **Embeddings** — Encode chunks using **bge-small-en-v1.5 (384d)**.  
+4. **Vector Store** — Persist embeddings in **ChromaDB**.  
+5. **Retrieval** — Query via **cosine similarity** to fetch relevant chunks.  
+6. **Generation (RAG)** — Compose answers with **Gemini Flash** + retrieved context.  
+7. **Lesson Scripts** — Build concise explainer scripts from RAG outputs.  
+8. **Audio** — Generate narration with **gTTS**.  
+9. **Video** — Create avatar lessons using **OmniAvatar** (2–3 min).  
+10. **Study Plans** — Produce personalized, spaced-repetition schedules.  
+11. **Dashboard** — Present Q&A, plans, and videos to the learner.
+
+**Evaluation Targets:** Extraction >95% · Q&A relevance >85% · Latency <5s · High avatar realism
 ---
 
 ## 🌟 Expected Outcomes
