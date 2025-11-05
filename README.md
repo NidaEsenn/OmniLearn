@@ -84,28 +84,28 @@ We test the pipeline on **CS 5800: Algorithms Lecture Notes (85 pages)**:
 ## 🧠 Architecture Diagram (Mermaid)
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[PDFs] --> B[Text extraction - PyMuPDF]
-    B --> C[Chunking 1000 chars + 200 overlap]
-    C --> D[Embeddings - bge-small-en-v1.5 (384d)]
-    D --> E[ChromaDB vector store]
+    B --> C[Chunking - 1000 chars + overlap]
+    C --> D[Embeddings - bge small model]
+    D --> E[Vector store - ChromaDB]
     E --> F[Retriever - cosine similarity]
-    F --> G[LLM - Gemini 2.0 Flash]
+    F --> G[LLM - Gemini Flash]
     G --> H[Q&A responses]
-    F --> I[Lesson script builder]
-    I --> J[gTTS audio]
-    J --> K[OmniAvatar video 2-3 min]
+    F --> I[Script builder for lessons]
+    I --> J[Audio generation - gTTS]
+    J --> K[Video - OmniAvatar]
     H --> L[Study plan generator]
     L --> M[User dashboard]
     K --> M
-    subgraph Eval[Evaluation]
+    subgraph Evaluation
       N[Extraction >95%]
       O[Q&A relevance >85%]
-      P[Latency <5 s]
+      P[Latency <5s]
       Q[Avatar quality]
     end
-    H --> Eval
-    K --> Eval
+    H --> Evaluation
+    K --> Evaluation
 
 ---
 
