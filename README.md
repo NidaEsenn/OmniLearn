@@ -82,7 +82,6 @@ We test the pipeline on **CS 5800: Algorithms Lecture Notes (85 pages)**:
 ---
 
 ## 🧠 Architecture Diagram
-## 🧠 Architecture Diagram (Mermaid)
 
 ```mermaid
 flowchart LR
