@@ -1,0 +1,126 @@
+question_id,category,difficulty,question,generated_answer,source_pages,source_chunks,expected_sections,reference_answer,key_points,relevance_score,correctness_score,citation_score,detail_score,total_score,pass_fail,notes
+1,definitions,easy,What is selection sort?,"Selection sort is an algorithm that works by finding the minimum element in the unsorted array and swapping it with the leftmost element of the array. The size of the unsorted section reduces by 1, and this process continues until the size of the unsorted part of the array reduces to 1 [Page 10, 11, 12].","[13, 14], [13, 14], [13, 14], [10, 11, 12], [10, 11, 12]","chunk_7, chunk_7, chunk_7, chunk_5, chunk_5","Chapter 2, Selection Sort, Page 10-14","Selection sort is a comparison-based sorting algorithm that repeatedly selects the minimum element from the unsorted portion of the array and swaps it with the leftmost element of the unsorted part. After each pass, the sorted region grows by one element from the left, and the unsorted region shrinks by one.",Find minimum element in unsorted part | Swap with leftmost element of unsorted region | Sorted part grows from the left | Repeat until only one element remains unsorted,,,,,,,
+2,definitions,easy,What is insertion sort and how does it conceptually treat the array?,"Insertion sort is an algorithm where the array is sorted as the algorithm progresses. It assumes the array containing just the first element is sorted. The algorithm checks the next element, the i+1th element (referred to as the unsorted element), and tries to find the first index in the sorted part where the i+1th element can be placed such that all elements to the left are smaller or equal to the i+1th element, and all elements to the right are greater or equal to the i+1th element [Page 15, 16].
+```pseudo
+In this algorithm, we sort the array as we go. A single element by itself is sorted, so we 
+assume the array containing just the first element is sorted. 
+The array from index 0 to index i is sorted, check the next element, i+1th element 
+(referred to as unsorted element) and try to find the first index in the sorted part where 
+the i+1th element can be placed such that all elements towards the left of this position 
+are smaller or equal to i+1th element and all elements towards the right are greater or 
+equal to the i+1th element. 
+The array obtained after the above steps from 0 to i+1 is sorted.
+```
+[Page 15, 16]","[17, 18, 19, 20], [17, 18, 19, 20], [17, 18, 19, 20], [15, 16], [15, 16]","chunk_12, chunk_12, chunk_12, chunk_10, chunk_10","Chapter 2, Insertion Sort, Page 15-18","Insertion sort views the array as split into a sorted part on the left and an unsorted part on the right. Starting from the second element, it takes the next unsorted element and inserts it into the correct position within the sorted part by shifting larger elements one position to the right. After each insertion, the sorted portion extends by one element.",Maintains a sorted prefix and an unsorted suffix | Takes next unsorted element | Shifts larger elements in sorted part to the right | Inserts element into correct position in sorted part,,,,,,,
+3,definitions,medium,What is a divide-and-conquer algorithm?,"A divide-and-conquer algorithm recursively breaks down a problem into two or more sub-problems of the same or related type, until these become simple enough to be solved directly [Page 22].
+
+To solve a problem P using divide-and-conquer:
+1. Divide P into two smaller problems P₁, P₂.
+2. Conquer by solving the (smaller) subproblems recursively.
+3. Combine solutions to P₁, P₂ into a solution for P [Page 22].
+[Page 22]","[23, 24, 25], [23, 24, 25], [23, 24, 25], [20, 21, 22, 23], [20, 21, 22, 23]","chunk_15, chunk_15, chunk_15, chunk_14, chunk_14","Chapter 4, Divide-And-Conquer Algorithms, Page 22-23","A divide-and-conquer algorithm is one that recursively breaks a problem into two or more smaller subproblems of the same or related type, solves these simpler subproblems, and then combines their solutions to obtain the solution to the original problem. The divide, conquer, and combine structure is repeated until the subproblems are simple enough to solve directly.",Recursively split problem into subproblems | Subproblems are of same or related type | Solve subproblems directly when small enough | Combine subproblem solutions to solve original problem,,,,,,,
+4,complexity_analysis,medium,"What are the worst-case and best-case time complexities of bubble sort in this lecture, and when do they occur?","The lecture states that the time complexity of the Bubble Sort algorithm is $$O(N^2)$$ in the worst case, which occurs when the input is sorted in reverse order [Page 9]. The best-case time complexity is not explicitly stated, but there is a question about it [Page 9]. The lecture suggests improving the algorithm by ending execution if there are no swaps in the inner array, implying the array is already sorted [Page 8].","[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [8, 9, 10], [8, 9, 10]","chunk_0, chunk_0, chunk_0, chunk_3, chunk_3","Chapter 2, Bubble Sort, Page 4-9","In the worst case, when the array is sorted in reverse order, bubble sort has time complexity O(n²) because it requires about n−1 passes and up to n−1 comparisons per pass. With the early-termination optimization that stops when no swaps occur in a pass, the best case is O(n), which happens when the array is already sorted and the algorithm detects in the first pass that no swaps are needed.",Worst case: O(n²) with reverse-sorted input | Requires many passes and comparisons | Best case with early-termination: O(n) | Best case occurs when input is already sorted and no swaps happen,,,,,,,
+5,complexity_analysis,medium,"What is the time complexity of selection sort in the best, average, and worst cases, and why is it the same in all cases?","The time complexity of selection sort is:
+*   Best Case: $$O(N^2)$$
+*   Average Case: $$O(N^2)$$
+*   Worst Case: $$O(N^2)$$
+
+Even in the best case where the array is already sorted, the algorithm still performs $$(N*(N-1))/2$$ comparisons to maintain the order. On average, every iteration of the inner loop makes about half the maximum number of comparisons, still resulting in $$O(N^2)$$ complexity. In the worst case, the inner loop performs the maximum number of comparisons, yielding a time complexity of $$O(N^2)$$. [Page 13, 14]","[13, 14], [13, 14], [13, 14], [9, 10, 11], [9, 10, 11]","chunk_7, chunk_7, chunk_7, chunk_4, chunk_4","Chapter 2, Selection Sort Complexity, Page 12-14","Selection sort has O(n²) time complexity in the best, average, and worst cases. Even if the array is already sorted, the algorithm still scans the remaining unsorted part to find the minimum on each pass, performing about n(n−1)/2 comparisons in total. Since it never stops early based on order and always does the same pattern of comparisons, the running time is Θ(n²) for all inputs.","O(n²) time in best, average, and worst cases | Always performs about n(n−1)/2 comparisons | Does not take advantage of an already sorted array | Running time independent of input order",,,,,,,
+6,complexity_analysis,easy,What is the time complexity of binary search and which recurrence describes its worst-case running time?,"The best-case time complexity of binary search is $$T(n) = O(1)$$. The worst-case running time can be described by the recurrence relation:
+
+$$
+T(n) = T( n
+$$
+
+$$
+2) + O(1)
+$$
+
+$$
+T(0) = O(1)
+$$ [Page 31]
+
+The recurrence relation can also be written as:
+
+$$
+T(n) = T(n/2) + c
+$$ [Page 32, 33]","[31, 32, 33], [31, 32, 33], [31, 32, 33], [31, 32, 33, 34], [31, 32, 33, 34]","chunk_21, chunk_21, chunk_21, chunk_22, chunk_22","Binary Search, Runtime Analysis, Page 30-34","Binary search has worst-case time complexity O(log n). In each step it compares the target value to the middle element of the current search interval and discards half of the remaining elements, so the problem size is halved each time. This leads to the recurrence T(n) = T(n/2) + O(1), which solves to T(n) = O(log n).",Binary search runs in O(log n) time | Halves the search interval each step | Worst-case recurrence T(n) = T(n/2) + O(1) | Number of steps proportional to log n,,,,,,,
+7,algorithm_explanations,medium,Explain how insertion sort builds up the sorted portion of the array.,"Insertion sort builds the sorted portion of the array incrementally. It assumes the array containing just the first element is sorted. The algorithm checks the next element, the i+1th element (referred to as the unsorted element), and tries to find the first index in the sorted part where the i+1th element can be placed such that all elements to the left are smaller or equal to the i+1th element, and all elements to the right are greater or equal to the i+1th element. After these steps, the array from 0 to i+1 is sorted [Page 15, 16].","[17, 18, 19, 20], [17, 18, 19, 20], [17, 18, 19, 20], [15, 16], [15, 16]","chunk_12, chunk_12, chunk_12, chunk_10, chunk_10","Chapter 2, Insertion Sort, Page 15-18","Insertion sort begins by treating the first element as a sorted subarray of size one. For each subsequent element at index i+1, it stores that element as the unsorted element and scans left through the sorted part, shifting any elements larger than the unsorted element one position to the right. When it finds the correct position where all elements to the left are ≤ and all to the right are ≥ the unsorted element, it inserts the element there. Repeating this for every index gradually grows the sorted portion from left to right.",Starts with first element as sorted | Takes next element as unsorted element | Shifts larger elements in the sorted part to the right | Inserts element into correct position | Sorted segment grows by one each iteration,,,,,,,
+8,algorithm_explanations,medium,"Describe how recursive binary search operates, including what happens when the target is not found.","The recursive binary search algorithm works by repeatedly dividing the search interval in half. If the target value matches the middle element `array[mid]`, the index `mid` is returned. If the target value is greater than `array[mid]`, the search continues in the right half of the array by calling `binary_search_recursive(array, mid+1, right, value)`. If the target value is less than `array[mid]`, the search continues in the left half of the array by calling `binary_search_recursive(array, left, mid-1, value)`. [Page 28, 29]
+
+If the target is not found, the search space shrinks until there are no elements left to check, which occurs when `left > right`. In this case, the function returns -1 (or any indicator) to signal that the target is not found. [Page 28, 29]
+
+```pseudo
+def binary_search_recursive(array, left, right, value):
+if left > right:
+return -1
+mid = (left + right) / 2
+if value == array[mid]:
+return mid
+if value > array[mid]:
+return binary_search_recursive(array, mid+1, right, value)
+# value < array[mid]
+return binary_search_recursive(array, left, mid-1, value)
+```
+[Page 28, 29]","[28, 29], [28, 29], [28, 29], [34, 35], [34, 35]","chunk_18, chunk_18, chunk_18, chunk_24, chunk_24","Binary Search, Recursive Binary Search, Page 27-30","Recursive binary search takes a sorted array and low and high indices defining the current search range. It first checks if low > high; if so, the search space is empty and it returns −1 to indicate the target is not found. Otherwise, it computes the middle index mid. If the array[mid] equals the target value, it returns mid. If the target is less than array[mid], it recursively searches the left half by setting high to mid−1. If the target is greater, it recursively searches the right half by setting low to mid+1. This continues until either the target is found or the range becomes empty.","Works on a sorted array with low and high bounds | Base case: low > high means target not found, return −1 | Compute mid and compare array[mid] with target | Recurse on left half if target < array[mid] | Recurse on right half if target > array[mid]",,,,,,,
+9,algorithm_explanations,medium,Explain how merge sort uses the divide-and-conquer paradigm to sort an array.,"Merge sort employs a divide-and-conquer strategy by recursively splitting the array in half until it cannot be further divided, meaning the array has only one element left. An array with one element is considered sorted. Then, the sorted subarrays are merged into one sorted array [Page 67, 68, 69] [Page 68, 69, 70, 71, 72].
+
+The process involves:
+1.  Dividing the original array into two halves.
+2.  Sorting each half using recursion.
+3.  Merging the two sorted halves [Page 68, 69, 70, 71, 72].","[68, 69, 70, 71, 72], [68, 69, 70, 71, 72], [68, 69, 70, 71, 72], [67, 68, 69], [67, 68, 69]","chunk_42, chunk_42, chunk_42, chunk_41, chunk_41","Chapter 3, Merge Sort Using Divide-And-Conquer, Page 65-72,76","Merge sort applies divide-and-conquer by first dividing the input array into two halves. It then recursively sorts each half, assuming that the recursive calls return these subarrays in sorted order. In the combine step, it performs a merge operation that scans both sorted halves with pointers and repeatedly chooses the smaller current element to build a single sorted output array. The base case occurs when a subarray has length one, which is already sorted. By repeatedly splitting and merging, the entire array becomes sorted.","Divide: split array into two halves | Conquer: recursively sort each half | Combine: merge two sorted halves into one sorted array | Base case: subarray of size one is already sorted | Overall structure follows divide, conquer, combine",,,,,,,
+10,comparisons,hard,"Compare bubble sort, selection sort, and insertion sort in terms of how they reduce the problem size each pass and their best-case performance.",I cannot find the answer in the provided lecture material.,"[67, 68, 69], [67, 68, 69], [67, 68, 69], [14, 15], [14, 15]","chunk_41, chunk_41, chunk_41, chunk_8, chunk_8","Chapter 2, Quadratic Sorting Algorithms, Page 2-3,4-18","Bubble sort repeatedly compares adjacent elements and bubbles the largest remaining element toward the right, effectively shrinking the unsorted portion from the right; with an early-stopping check, its best case on an already sorted array is O(n). Selection sort repeatedly scans the unsorted part to find the minimum and swaps it with the first unsorted position, shrinking the unsorted portion from the left; its best case is still O(n²) because it always does the same comparisons. Insertion sort grows a sorted prefix by inserting each new element into its correct position; with an already sorted array, it only scans one position per element, giving a best case of O(n).",Bubble sort bubbles largest element to right each pass | Selection sort selects minimum and grows sorted prefix | Insertion sort inserts next element into sorted prefix | Bubble and insertion have O(n) best case with favorable input | Selection sort remains O(n²) even in best case,,,,,,,
+11,comparisons,medium,"Compare recursive and iterative implementations of binary search in terms of ease of analysis, time complexity, and space usage.","Here's a comparison of recursive and iterative binary search:
+
+*   **Ease of Analysis:** It is easier to write recursive code and derive recurrence from it, but harder to write iterative code and analyze it [Page 35].
+*   **Time Complexity:** Both recursive and iterative binary search have a time complexity of $$O(logn)$$ [Page 35].
+*   **Space Usage:** The recursive solution requires $$O(logn)$$ extra space for the call stack, while the iterative solution requires only $$O(1)$$ space [Page 35]. Therefore, the iterative solution is more space-efficient [Page 35].","[34, 35], [34, 35], [34, 35], [31, 32, 33, 34], [31, 32, 33, 34]","chunk_24, chunk_24, chunk_24, chunk_22, chunk_22","Binary Search, Recursive VS. Iterative Binary Search, Page 31,34-35","Both recursive and iterative binary search perform the same comparisons and halve the search space each step, so they have the same time complexity O(log n). The recursive version is often easier to write and directly exposes the recurrence T(n) = T(n/2) + O(1) for analysis, but it uses O(log n) extra space on the call stack. The iterative version uses a loop with low and high pointers and requires only O(1) extra space, making it more space-efficient and avoiding recursion overhead, though it can be slightly harder to reason about at first.",Both versions have O(log n) time complexity | Recursive version easier to relate to recurrence | Recursive version uses O(log n) stack space | Iterative version uses O(1) extra space | Iterative avoids recursion overhead but can be harder to write initially,,,,,,,
+12,comparisons,hard,Compare the divide-and-conquer matrix multiplication algorithm with Strassen’s algorithm in terms of their recurrences and asymptotic running times.,"The divide and conquer matrix multiplication method has a time complexity component of 8 recursive calls, while Strassen’s method reduces the number of recursive calls to 7 [Page 86].
+
+The time complexity of the divide and conquer algorithm is:
+$$
+T(n) = 8T( n
+$$
+
+$$
+2) + O(n2)
+$$
+Which leads to $$T(n) = O(n^3)$$. [Page 85]
+I cannot find the asymptotic running time for Strassen's algorithm in the provided lecture material.","[86, 87], [86, 87], [86, 87], [84, 85, 86], [84, 85, 86]","chunk_52, chunk_52, chunk_52, chunk_51, chunk_51","Matrix Multiplication, Divide and Conquer and Strassen, Page 84-88","The straightforward divide-and-conquer matrix multiplication partitions matrices into four n/2×n/2 blocks and performs 8 recursive multiplications plus O(n²) additions, giving the recurrence T(n) = 8T(n/2) + O(n²), which solves to O(n³). Strassen’s algorithm reduces the number of recursive multiplications to 7 at the cost of more additions, leading to T(n) = 7T(n/2) + O(n²). By the Master Theorem, this solves to O(n^{log₂7}), which is about O(n^{2.81}), asymptotically faster than the O(n³) divide-and-conquer method.","Naive divide-and-conquer: T(n) = 8T(n/2) + O(n²) → O(n³) | Strassen: T(n) = 7T(n/2) + O(n²) | Strassen has exponent log₂ 7 ≈ 2.81 | Strassen asymptotically faster than O(n³) | Trade-off: fewer multiplications, more additions",,,,,,,
+13,pseudocode,medium,Provide the pseudocode for the recursive binary search algorithm presented in the lecture.,"```pseudo
+def binary_search_recursive(array, left, right, value):
+    if left > right:
+        return -1
+    mid = (left + right) / 2
+    if value == array[mid]:
+        return mid
+    if value > array[mid]:
+        return binary_search_recursive(array, mid+1, right, value)
+    # value < array[mid]
+    return binary_search_recursive(array, left, mid-1, value)
+```
+[Chunk ID]","[31, 32, 33, 34], [31, 32, 33, 34], [31, 32, 33, 34], [28, 29, 30], [28, 29, 30]","chunk_22, chunk_22, chunk_22, chunk_19, chunk_19","Binary Search, Recursive Binary Search Pseudocode, Page 27-30","The pseudocode should define a function that takes an array, left index, right index, and target value. It first checks if left > right; if so, return −1. It computes mid = (left + right) / 2. If array[mid] equals the target, return mid. If the target is greater than array[mid], it recursively calls itself on the right half with left = mid + 1. Otherwise, it recursively calls itself on the left half with right = mid − 1.","Function parameters: array, left, right, target | Base case: if left > right return −1 | Compute mid = (left + right) / 2 | Return mid if array[mid] == target | Recurse on left or right half based on comparison",,,,,,,
+14,pseudocode,medium,Write high-level pseudocode for merge sort as described in the lecture.,"Here is the pseudocode for merge sort:
+```pseudo
+mergesort (array a)
+
+if(n == 1)
+return a
+
+arrayOne = a(O] ... a[n/2]
+arrayTwo = a[n/2+1]... a[n]
+arrayOne = mergesort ( arrayOne )
+arraylwo = mergesort ( arrayTwo )
+return merge ( arrayOne, arrayTwo )
+``` [Page 72, 73]","[72, 73, 74], [72, 73, 74], [72, 73, 74], [69, 70, 71, 72, 73], [69, 70, 71, 72, 73]","chunk_44, chunk_44, chunk_44, chunk_43, chunk_43","Chapter 3, Merge Sort Using Divide-And-Conquer, Page 68-72,76","The merge sort pseudocode should: 1) Check if the array length is 1; if so, return. 2) Compute the midpoint and split the array into left and right halves. 3) Recursively call merge sort on the left half and on the right half. 4) Call a merge procedure that takes the two sorted halves and merges them into a single sorted array by comparing the front elements of each half and repeatedly copying the smaller into the output.","Base case: if length ≤ 1, return | Compute midpoint to split array into two halves | Recursively sort left half | Recursively sort right half | Call merge procedure to combine two sorted halves",,,,,,,
+15,pseudocode,hard,Outline pseudocode for the divide-and-conquer matrix multiplication algorithm that partitions matrices into quadrants.,"The lecture material describes partitioning each of the matrices A, B, and C into 4 quarters for the divide and conquer approach [Page 84]. The resulting submatrices are used to compute the quarters of the result matrix C as follows [Page 84]:
+
+$$
+\begin{aligned}
+&C_{11} = A_{11} \cdot B_{11} + A_{12} \cdot B_{21}, \\
+&C_{12} = A_{11} \cdot B_{12} + A_{12} \cdot B_{22}, \\
+&C_{21} = A_{21} \cdot B_{11} + A_{22} \cdot B_{21}, \\
+&C_{22} = A_{21} \cdot B_{12} + A_{22} \cdot B_{22}.
+\end{aligned}
+$$
+[Page 84]","[83, 84, 85], [83, 84, 85], [83, 84, 85], [80, 81, 82, 83, 84], [80, 81, 82, 83, 84]","chunk_50, chunk_50, chunk_50, chunk_49, chunk_49","Matrix Multiplication Using Divide and Conquer, Page 84-85","The pseudocode should: 1) Handle the base case of 1 × 1 matrices by returning their product. 2) Partition matrices A, B, and C into four n/2×n/2 submatrices (A11, A12, A21, A22, etc.). 3) Recursively compute the eight products needed, such as C11 = A11·B11 + A12·B21, C12 = A11·B12 + A12·B22, C21 = A21·B11 + A22·B21, and C22 = A21·B12 + A22·B22. 4) Combine these four resulting blocks into the full result matrix C.","Base case: multiply single scalar entries | Partition A, B, C into 4 quadrants each | Compute C11, C12, C21, C22 via 8 recursive multiplications plus additions | Reassemble quadrants into full result matrix | Reflects recurrence T(n) = 8T(n/2) + O(n²)",,,,,,,

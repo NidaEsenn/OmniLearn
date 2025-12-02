@@ -1,0 +1,238 @@
+{
+  "metadata": {
+    "dataset_name": "Lecture 2 Divide-and-Conquer & Sorting Evaluation Set",
+    "version": "1.0",
+    "created_date": "2025-11-30",
+    "total_questions": 15,
+    "categories": {
+      "definitions": 3,
+      "complexity_analysis": 3,
+      "algorithm_explanations": 3,
+      "comparisons": 3,
+      "pseudocode": 3
+    },
+    "target_pdf": "CS5800 Lecture 2 - Quadratic Sorting, Divide-and-Conquer, Recurrences, Merge Sort, Matrix Multiplication",
+    "evaluation_goal": "85% of answers should score ≥6/8"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "category": "definitions",
+      "question": "What is selection sort?",
+      "expected_sections": ["Chapter 2", "Selection Sort", "Page 10-14"],
+      "reference_answer": "Selection sort is a comparison-based sorting algorithm that repeatedly selects the minimum element from the unsorted portion of the array and swaps it with the leftmost element of the unsorted part. After each pass, the sorted region grows by one element from the left, and the unsorted region shrinks by one.",
+      "key_points": [
+        "Find minimum element in unsorted part",
+        "Swap with leftmost element of unsorted region",
+        "Sorted part grows from the left",
+        "Repeat until only one element remains unsorted"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "category": "definitions",
+      "question": "What is insertion sort and how does it conceptually treat the array?",
+      "expected_sections": ["Chapter 2", "Insertion Sort", "Page 15-18"],
+      "reference_answer": "Insertion sort views the array as split into a sorted part on the left and an unsorted part on the right. Starting from the second element, it takes the next unsorted element and inserts it into the correct position within the sorted part by shifting larger elements one position to the right. After each insertion, the sorted portion extends by one element.",
+      "key_points": [
+        "Maintains a sorted prefix and an unsorted suffix",
+        "Takes next unsorted element",
+        "Shifts larger elements in sorted part to the right",
+        "Inserts element into correct position in sorted part"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "category": "definitions",
+      "question": "What is a divide-and-conquer algorithm?",
+      "expected_sections": ["Chapter 4", "Divide-And-Conquer Algorithms", "Page 22-23"],
+      "reference_answer": "A divide-and-conquer algorithm is one that recursively breaks a problem into two or more smaller subproblems of the same or related type, solves these simpler subproblems, and then combines their solutions to obtain the solution to the original problem. The divide, conquer, and combine structure is repeated until the subproblems are simple enough to solve directly.",
+      "key_points": [
+        "Recursively split problem into subproblems",
+        "Subproblems are of same or related type",
+        "Solve subproblems directly when small enough",
+        "Combine subproblem solutions to solve original problem"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 4,
+      "category": "complexity_analysis",
+      "question": "What are the worst-case and best-case time complexities of bubble sort in this lecture, and when do they occur?",
+      "expected_sections": ["Chapter 2", "Bubble Sort", "Page 4-9"],
+      "reference_answer": "In the worst case, when the array is sorted in reverse order, bubble sort has time complexity O(n²) because it requires about n−1 passes and up to n−1 comparisons per pass. With the early-termination optimization that stops when no swaps occur in a pass, the best case is O(n), which happens when the array is already sorted and the algorithm detects in the first pass that no swaps are needed.",
+      "key_points": [
+        "Worst case: O(n²) with reverse-sorted input",
+        "Requires many passes and comparisons",
+        "Best case with early-termination: O(n)",
+        "Best case occurs when input is already sorted and no swaps happen"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 5,
+      "category": "complexity_analysis",
+      "question": "What is the time complexity of selection sort in the best, average, and worst cases, and why is it the same in all cases?",
+      "expected_sections": ["Chapter 2", "Selection Sort Complexity", "Page 12-14"],
+      "reference_answer": "Selection sort has O(n²) time complexity in the best, average, and worst cases. Even if the array is already sorted, the algorithm still scans the remaining unsorted part to find the minimum on each pass, performing about n(n−1)/2 comparisons in total. Since it never stops early based on order and always does the same pattern of comparisons, the running time is Θ(n²) for all inputs.",
+      "key_points": [
+        "O(n²) time in best, average, and worst cases",
+        "Always performs about n(n−1)/2 comparisons",
+        "Does not take advantage of an already sorted array",
+        "Running time independent of input order"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 6,
+      "category": "complexity_analysis",
+      "question": "What is the time complexity of binary search and which recurrence describes its worst-case running time?",
+      "expected_sections": ["Binary Search", "Runtime Analysis", "Page 30-34"],
+      "reference_answer": "Binary search has worst-case time complexity O(log n). In each step it compares the target value to the middle element of the current search interval and discards half of the remaining elements, so the problem size is halved each time. This leads to the recurrence T(n) = T(n/2) + O(1), which solves to T(n) = O(log n).",
+      "key_points": [
+        "Binary search runs in O(log n) time",
+        "Halves the search interval each step",
+        "Worst-case recurrence T(n) = T(n/2) + O(1)",
+        "Number of steps proportional to log n"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "category": "algorithm_explanations",
+      "question": "Explain how insertion sort builds up the sorted portion of the array.",
+      "expected_sections": ["Chapter 2", "Insertion Sort", "Page 15-18"],
+      "reference_answer": "Insertion sort begins by treating the first element as a sorted subarray of size one. For each subsequent element at index i+1, it stores that element as the unsorted element and scans left through the sorted part, shifting any elements larger than the unsorted element one position to the right. When it finds the correct position where all elements to the left are ≤ and all to the right are ≥ the unsorted element, it inserts the element there. Repeating this for every index gradually grows the sorted portion from left to right.",
+      "key_points": [
+        "Starts with first element as sorted",
+        "Takes next element as unsorted element",
+        "Shifts larger elements in the sorted part to the right",
+        "Inserts element into correct position",
+        "Sorted segment grows by one each iteration"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 8,
+      "category": "algorithm_explanations",
+      "question": "Describe how recursive binary search operates, including what happens when the target is not found.",
+      "expected_sections": ["Binary Search", "Recursive Binary Search", "Page 27-30"],
+      "reference_answer": "Recursive binary search takes a sorted array and low and high indices defining the current search range. It first checks if low > high; if so, the search space is empty and it returns −1 to indicate the target is not found. Otherwise, it computes the middle index mid. If the array[mid] equals the target value, it returns mid. If the target is less than array[mid], it recursively searches the left half by setting high to mid−1. If the target is greater, it recursively searches the right half by setting low to mid+1. This continues until either the target is found or the range becomes empty.",
+      "key_points": [
+        "Works on a sorted array with low and high bounds",
+        "Base case: low > high means target not found, return −1",
+        "Compute mid and compare array[mid] with target",
+        "Recurse on left half if target < array[mid]",
+        "Recurse on right half if target > array[mid]"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 9,
+      "category": "algorithm_explanations",
+      "question": "Explain how merge sort uses the divide-and-conquer paradigm to sort an array.",
+      "expected_sections": ["Chapter 3", "Merge Sort Using Divide-And-Conquer", "Page 65-72,76"],
+      "reference_answer": "Merge sort applies divide-and-conquer by first dividing the input array into two halves. It then recursively sorts each half, assuming that the recursive calls return these subarrays in sorted order. In the combine step, it performs a merge operation that scans both sorted halves with pointers and repeatedly chooses the smaller current element to build a single sorted output array. The base case occurs when a subarray has length one, which is already sorted. By repeatedly splitting and merging, the entire array becomes sorted.",
+      "key_points": [
+        "Divide: split array into two halves",
+        "Conquer: recursively sort each half",
+        "Combine: merge two sorted halves into one sorted array",
+        "Base case: subarray of size one is already sorted",
+        "Overall structure follows divide, conquer, combine"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 10,
+      "category": "comparisons",
+      "question": "Compare bubble sort, selection sort, and insertion sort in terms of how they reduce the problem size each pass and their best-case performance.",
+      "expected_sections": ["Chapter 2", "Quadratic Sorting Algorithms", "Page 2-3,4-18"],
+      "reference_answer": "Bubble sort repeatedly compares adjacent elements and bubbles the largest remaining element toward the right, effectively shrinking the unsorted portion from the right; with an early-stopping check, its best case on an already sorted array is O(n). Selection sort repeatedly scans the unsorted part to find the minimum and swaps it with the first unsorted position, shrinking the unsorted portion from the left; its best case is still O(n²) because it always does the same comparisons. Insertion sort grows a sorted prefix by inserting each new element into its correct position; with an already sorted array, it only scans one position per element, giving a best case of O(n).",
+      "key_points": [
+        "Bubble sort bubbles largest element to right each pass",
+        "Selection sort selects minimum and grows sorted prefix",
+        "Insertion sort inserts next element into sorted prefix",
+        "Bubble and insertion have O(n) best case with favorable input",
+        "Selection sort remains O(n²) even in best case"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": 11,
+      "category": "comparisons",
+      "question": "Compare recursive and iterative implementations of binary search in terms of ease of analysis, time complexity, and space usage.",
+      "expected_sections": ["Binary Search", "Recursive VS. Iterative Binary Search", "Page 31,34-35"],
+      "reference_answer": "Both recursive and iterative binary search perform the same comparisons and halve the search space each step, so they have the same time complexity O(log n). The recursive version is often easier to write and directly exposes the recurrence T(n) = T(n/2) + O(1) for analysis, but it uses O(log n) extra space on the call stack. The iterative version uses a loop with low and high pointers and requires only O(1) extra space, making it more space-efficient and avoiding recursion overhead, though it can be slightly harder to reason about at first.",
+      "key_points": [
+        "Both versions have O(log n) time complexity",
+        "Recursive version easier to relate to recurrence",
+        "Recursive version uses O(log n) stack space",
+        "Iterative version uses O(1) extra space",
+        "Iterative avoids recursion overhead but can be harder to write initially"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 12,
+      "category": "comparisons",
+      "question": "Compare the divide-and-conquer matrix multiplication algorithm with Strassen’s algorithm in terms of their recurrences and asymptotic running times.",
+      "expected_sections": ["Matrix Multiplication", "Divide and Conquer and Strassen", "Page 84-88"],
+      "reference_answer": "The straightforward divide-and-conquer matrix multiplication partitions matrices into four n/2×n/2 blocks and performs 8 recursive multiplications plus O(n²) additions, giving the recurrence T(n) = 8T(n/2) + O(n²), which solves to O(n³). Strassen’s algorithm reduces the number of recursive multiplications to 7 at the cost of more additions, leading to T(n) = 7T(n/2) + O(n²). By the Master Theorem, this solves to O(n^{log₂7}), which is about O(n^{2.81}), asymptotically faster than the O(n³) divide-and-conquer method.",
+      "key_points": [
+        "Naive divide-and-conquer: T(n) = 8T(n/2) + O(n²) → O(n³)",
+        "Strassen: T(n) = 7T(n/2) + O(n²)",
+        "Strassen has exponent log₂ 7 ≈ 2.81",
+        "Strassen asymptotically faster than O(n³)",
+        "Trade-off: fewer multiplications, more additions"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "id": 13,
+      "category": "pseudocode",
+      "question": "Provide the pseudocode for the recursive binary search algorithm presented in the lecture.",
+      "expected_sections": ["Binary Search", "Recursive Binary Search Pseudocode", "Page 27-30"],
+      "reference_answer": "The pseudocode should define a function that takes an array, left index, right index, and target value. It first checks if left > right; if so, return −1. It computes mid = (left + right) / 2. If array[mid] equals the target, return mid. If the target is greater than array[mid], it recursively calls itself on the right half with left = mid + 1. Otherwise, it recursively calls itself on the left half with right = mid − 1.",
+      "key_points": [
+        "Function parameters: array, left, right, target",
+        "Base case: if left > right return −1",
+        "Compute mid = (left + right) / 2",
+        "Return mid if array[mid] == target",
+        "Recurse on left or right half based on comparison"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 14,
+      "category": "pseudocode",
+      "question": "Write high-level pseudocode for merge sort as described in the lecture.",
+      "expected_sections": ["Chapter 3", "Merge Sort Using Divide-And-Conquer", "Page 68-72,76"],
+      "reference_answer": "The merge sort pseudocode should: 1) Check if the array length is 1; if so, return. 2) Compute the midpoint and split the array into left and right halves. 3) Recursively call merge sort on the left half and on the right half. 4) Call a merge procedure that takes the two sorted halves and merges them into a single sorted array by comparing the front elements of each half and repeatedly copying the smaller into the output.",
+      "key_points": [
+        "Base case: if length ≤ 1, return",
+        "Compute midpoint to split array into two halves",
+        "Recursively sort left half",
+        "Recursively sort right half",
+        "Call merge procedure to combine two sorted halves"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "id": 15,
+      "category": "pseudocode",
+      "question": "Outline pseudocode for the divide-and-conquer matrix multiplication algorithm that partitions matrices into quadrants.",
+      "expected_sections": ["Matrix Multiplication Using Divide and Conquer", "Page 84-85"],
+      "reference_answer": "The pseudocode should: 1) Handle the base case of 1 × 1 matrices by returning their product. 2) Partition matrices A, B, and C into four n/2×n/2 submatrices (A11, A12, A21, A22, etc.). 3) Recursively compute the eight products needed, such as C11 = A11·B11 + A12·B21, C12 = A11·B12 + A12·B22, C21 = A21·B11 + A22·B21, and C22 = A21·B12 + A22·B22. 4) Combine these four resulting blocks into the full result matrix C.",
+      "key_points": [
+        "Base case: multiply single scalar entries",
+        "Partition A, B, C into 4 quadrants each",
+        "Compute C11, C12, C21, C22 via 8 recursive multiplications plus additions",
+        "Reassemble quadrants into full result matrix",
+        "Reflects recurrence T(n) = 8T(n/2) + O(n²)"
+      ],
+      "difficulty": "hard"
+    }
+  ]
+}
