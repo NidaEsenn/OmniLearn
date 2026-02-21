@@ -15,6 +15,7 @@ omnilearn/
 # Environment Variables
 .env
 .env.local
+.streamlit/secrets.toml
 
 # IDEs
 .vscode/
