@@ -3,8 +3,20 @@ import uuid
 import streamlit as st
 
 # Set API key from Streamlit secrets BEFORE importing app modules
-if "GOOGLE_API_KEY" in st.secrets:
-    os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+try:
+    if "GOOGLE_API_KEY" in st.secrets:
+        os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+except Exception:
+    pass
+
+# Check if API key is available
+if not os.environ.get("GOOGLE_API_KEY"):
+    st.error(
+        "\u274c GOOGLE_API_KEY bulunamadi! "
+        "Streamlit Cloud'da Settings > Secrets kismina "
+        '`GOOGLE_API_KEY = "your-key"` ekleyin.'
+    )
+    st.stop()
 
 from app.pdf_ingestion.extract import extract_text_from_pdf
 from app.pdf_ingestion.chunk import create_chunks_with_metadata
