@@ -4,22 +4,18 @@ import streamlit as st
 
 # Set API key from Streamlit secrets BEFORE importing app modules
 try:
-    secrets_keys = list(st.secrets.keys()) if hasattr(st.secrets, 'keys') else []
-    st.write(f"DEBUG - Available secrets: {secrets_keys}")
-    if "GOOGLE_API_KEY" in st.secrets:
-        os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
-        st.write("DEBUG - Key found and set!")
-    else:
-        st.write("DEBUG - GOOGLE_API_KEY not found in secrets")
-except Exception as e:
-    st.write(f"DEBUG - Error reading secrets: {e}")
+    for key_name in ["GOOGLE_API_KEY", "GEMINI_API_KEY"]:
+        if key_name in st.secrets:
+            os.environ["GOOGLE_API_KEY"] = st.secrets[key_name]
+            break
+except Exception:
+    pass
 
 # Check if API key is available
 if not os.environ.get("GOOGLE_API_KEY"):
     st.error(
-        "\u274c GOOGLE_API_KEY bulunamadi! "
-        "Streamlit Cloud'da Manage app > Settings > Secrets kismina "
-        'su formatta ekleyin:'
+        "\u274c API key bulunamadi! "
+        "Streamlit Cloud'da Manage app > Settings > Secrets kismina ekleyin."
     )
     st.code('GOOGLE_API_KEY = "AIzaSyXXXXXX"', language="toml")
     st.stop()

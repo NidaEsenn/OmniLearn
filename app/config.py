@@ -8,9 +8,11 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 if not GOOGLE_API_KEY:
     try:
         import streamlit as st
-        GOOGLE_API_KEY = st.secrets.get("GOOGLE_API_KEY", None)
-        if GOOGLE_API_KEY:
-            os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
+        for _key in ["GOOGLE_API_KEY", "GEMINI_API_KEY"]:
+            if _key in st.secrets:
+                GOOGLE_API_KEY = st.secrets[_key]
+                os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
+                break
     except Exception:
         pass
 
