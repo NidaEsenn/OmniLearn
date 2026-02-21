@@ -41,14 +41,15 @@ def format_docs(docs):
 
 class QAChain:
     def __init__(self):
-        if not GOOGLE_API_KEY:
+        from app.config import GOOGLE_API_KEY as api_key
+        if not api_key:
             raise ValueError("GOOGLE_API_KEY is not set.")
-            
+
         self.llm = ChatGoogleGenerativeAI(
             model=LLM_MODEL_NAME,
-            google_api_key=GOOGLE_API_KEY,
+            google_api_key=api_key,
             temperature=0.0,
-            convert_system_message_to_human=True # Sometimes needed for older Gemini versions, but 2.0 Flash is new. Safe to keep or remove.
+            convert_system_message_to_human=True
         )
         
         self.retriever = vector_store.as_retriever(search_kwargs={"k": 5})
